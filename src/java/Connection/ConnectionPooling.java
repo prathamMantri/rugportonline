@@ -17,74 +17,97 @@ public class ConnectionPooling {
     public Connection connect() {
 
         String url = null;
-        Connection conn=null;
+        Connection conn = null;
         try {
-        if (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production) {
-            // Connecting from App Engine.
-            // Load the class that provides the "jdbc:google:mysql://"
-            // prefix.
-            Class.forName("com.mysql.jdbc.GoogleDriver");
-             url = "jdbc:google:mysql://project-id:instance-name/databasename?user=******&password=******";
-        } else {
-            // Connecting from an external network.
-            Class.forName("com.mysql.jdbc.Driver");
-            url = "jdbc:mysql://instance-ip-address:3306/databasename?user=*****";
-        }
-        }catch (ClassNotFoundException e) {
-         System.out.println("Where is your MySQL JDBC Google Driver?");
-         e.printStackTrace();
-         }
-        try{
-        conn = DriverManager.getConnection(url);
-        if (conn!=null)
-        {
-            System.out.println("Done Bhai.. Finally");
-        }
-        }catch (SQLException e) {
-         System.out.println("Problem is:" + e.getMessage());
-         e.printStackTrace();
-         }
-        return conn;
-
-        /*System.out.println("-------- MySQL JDBC Connection Testing ------------");
-         try {
-         Class.forName("com.mysql.jdbc.GoogleDriver");
-         // Class.forName("com.mysql.jdbc.Driver");
-         } catch (ClassNotFoundException e) {
-         System.out.println("Where is your MySQL JDBC Google Driver?");
-         e.printStackTrace();
-         }
-         System.out.println("MySQL JDBC-Google Driver Registered!");
-         Connection connection = null;
-
-         try {
-         connection = DriverManager.getConnection("jdbc:google:mysql://rugportonline:rugportonline-mysql-instance/rugportdatabase?user=Pransh");
-         } catch (SQLException e) {
-         System.out.println("Problem is:" + e.getMessage());
-         e.printStackTrace();
-         }
-         if (connection != null) {
-         System.out.println("You made it, take control your database now!");
-         return connection;
-         } else {
-         System.out.println("Failed to make connection!");
-         return null;
-         }*/
-    }
-
-    public static void main(String[] args) {
-        ConnectionPooling cp = new ConnectionPooling();
-        Connection con = cp.connect();
-        try {
-            Statement st = con.createStatement();
-            String sql = ("SELECT * FROM ruginformation;");
-
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                System.out.println(rs.getInt("RugId"));
+            if (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production) {
+                Class.forName("com.mysql.jdbc.GoogleDriver");
+                url = "jdbc:google:mysql://rugportonline:rugportonline-mysql-instance/rugportdatabase?user=root&password=Pransh@1326";
+            } else {
+                // Connecting from an external network.
+                Class.forName("com.mysql.jdbc.Driver");
+                url = "jdbc:mysql://173.194.254.120:3306/rugportdatabase?user=Pransh";
             }
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
             System.out.println(e.getMessage());
         }
+        return conn;
+        
     }
 }
+        /*
+         System.out.println("-------- MySQL JDBC Connection Testing ------------");
+
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		System.out.println("Where is your MySQL JDBC Driver?");
+		e.printStackTrace();
+	}
+	System.out.println("MySQL JDBC Driver Registered!");
+	Connection connection = null;
+
+	try {
+		connection = DriverManager
+		.getConnection("jdbc:mysql://127.0.0.1:3306/RugportDatabase","root", "Pransh@1326");
+
+	} catch (SQLException e) {
+		System.out.println("Connection Failed! Check output console");
+		e.printStackTrace();
+		
+	}
+
+	if (connection != null) {
+		System.out.println("You made it, take control your database now!");
+                return connection;
+	} else {
+		System.out.println("Failed to make connection!");
+                return null;
+	}
+        
+    }
+}
+/*
+
+import java.sql.*;
+
+public class ConnectionPooling {
+    
+    public Connection connect()
+    {
+        System.out.println("-------- MySQL JDBC Connection Testing ------------");
+
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		System.out.println("Where is your MySQL JDBC Driver?");
+		e.printStackTrace();
+	}
+
+	System.out.println("MySQL JDBC Driver Registered!");
+	Connection connection = null;
+
+	try {
+		connection = DriverManager
+		.getConnection("jdbc:mysql://127.0.0.1:3306/RugportDatabase","root", "Pransh@1326");
+
+	} catch (SQLException e) {
+		System.out.println("Connection Failed! Check output console");
+		e.printStackTrace();
+		
+	}
+
+	if (connection != null) {
+		System.out.println("You made it, take control your database now!");
+                return connection;
+	} else {
+		System.out.println("Failed to make connection!");
+                return null;
+	}
+    }
+}*/

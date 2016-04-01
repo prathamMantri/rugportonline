@@ -32,14 +32,14 @@
             <link href='http://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
             <!-- webfonts -->
         </head>
-        <!--<script>
-            function newDoc() {
-                window.location.assign("http://rugportonline.appspot.com")
-            }
+        <script>
+            //  function newDoc() {
+            //     window.location.assign("http://rugportonline.appspot.com")
+            //     }
         </script>
 
 
-        <body onload="newDoc()">-->
+        <body > 
 
 
             <%
@@ -139,21 +139,21 @@
                                 <img class="img-responsive" src="images/1.jpg" alt="">
                                 <div class="slider-caption">
                                     <h1>Beautiful & durable</h1>
-                                    <p>Classically simple and beautifully elegant Hard wearing leather shoes and hand-made with heart </p>
+                                    <p>Now is a good time to beautify your home with a fine handmade oriental rug</p>
                                 </div>
                             </li>
                             <li>
                                 <img src="images/2.jpg" alt="">
                                 <div class="slider-caption">
-                                    <h1>Beautiful & durable</h1>
-                                    <p>Classically simple and beautifully elegant Hard wearing leather shoes and hand-made with heart </p>
+                                    <h1>Variety of Designs, Colors and Shapes </h1>
+                                    <p>Express your home's individuality by choosing your own designs, colors, shapes and size</p>
                                 </div>
                             </li>
                             <li>
                                 <img src="images/3.jpg" alt="">
                                 <div class="slider-caption">
-                                    <h1>Beautiful & durable</h1>
-                                    <p>Classically simple and beautifully elegant Hard wearing leather shoes and hand-made with heart </p>
+                                    <h1>We are best</h1>
+                                    <p>Skilled workers will invisibly reweave tears and holes in fine wool or silk rugs</p>
                                 </div>
                             </li>
                         </ul>
@@ -254,7 +254,7 @@
                             <div id="owl-demo1" class="owl-carousel text-center">
                                 <%
                                     c = 0;
-                                    //  imageURL = rs.getString("rugImageURL");
+
                                     rs.first();
                                     boolean next = rs.next();
                                     while (rs.next()) {
@@ -357,6 +357,20 @@
                             <li><a href="about.jsp">About Us</a></li>
                             <li><a href="contact.jsp">Contact Us</a></li>
                         </ul>
+                        </br></br>
+                        <div id='yelpwidget'>
+                            
+                            <script>(function () {
+                                    var s = document.createElement("script");
+                                    s.async = true;
+                                    s.onload = s.onreadystatechange = function () {
+                                        getYelpWidget("rugport-palatine-2", "350", "RED", "y", "y", "1");
+                                    };
+                                    s.src = 'http://chrisawren.com/widgets/yelp/yelpv2.js';
+                                    var x = document.getElementsByTagName('script')[0];
+                                    x.parentNode.insertBefore(s, x);
+                                })();</script>
+                        </div>
                     </div>
                     <div class="clearfix"> </div>
                 </div>

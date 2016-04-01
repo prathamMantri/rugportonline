@@ -11,7 +11,7 @@
         <%@ page import="Connection.*"%>
         <title>Rug Information</title>
         <link rel="stylesheet" href="css/example.css" />
-        <link rel="stylesheet" href="css/pygments.css" />
+    
         <!-- <link rel="stylesheet" href="css/easyzoom.css" />-->
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <!-- Custom Theme files -->
@@ -43,38 +43,21 @@
             <!-- top-header -->
             <div class="top-header">
                 <div class="container">
-                    <!--	<div class="rigister-info">
-                                    <ul>
-                                            <li><a href="#">Login</a></li>
-                                            <li><a href="#">SignUp</a></li>
-                                            <div class="clearfix"> </div>
-                                    </ul>
-                            </div>-->
                     <div class="clearfix"> </div>
                 </div>
             </div>
-            <!-- /top-header -->
-            <!-- bottom-header -->
             <div class="bottom-header">
                 <div class="container">
                     <div class="bottom-header-left">
-
                     </div>
-                    <div class="logo" he>
+                    <div class="logo" >
                         <a href="index.jsp"><img src="images/logo.png" title="Logo" /></a>
                     </div>
                     <div class="bottom-header-right">
-                        <!--<ul>
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Checkout</a></li>
-                        </ul>-->
                         <div class="search-cart">
                             <div class="search-box">
-
                             </div>
                             <div class="cart-box">
-
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -117,7 +100,6 @@
                             } else {
                                 imagepath = "images/Rug" + rugId + "/IMG_000" + rugId + "_1L.JPG";
                             }
-
                             rs = st.executeQuery(sql);
                         %>  
                         <div class="details-left">
@@ -130,7 +112,7 @@
                                     <br>
                                     <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
                                         <a href="<%=imagepath%>">
-                                            <img src="<%=imagepath%>" alt="" width="470" height="600" />
+                                            <img src="<%=imagepath%>" alt="" width="550" height="600" onclick="window.location = 'test2.jsp?rugId=<%=rugId%>'"/>
                                         </a>
                                     </div>
                                     <br>
@@ -138,14 +120,13 @@
                                     <ul class="thumbnails">
                                         <%while (rs.next()) {%>
                                         <li >
-                                            <a href="<%=rs.getString("RugImageDetailURL")%>" data-standard="<%=rs.getString("RugImageDetailURL")%>"
-                                               >
-                                                <img src="<%=rs.getString("RugImageDetailURL")%>" alt="" ondblclick ="window.location = 'rugZoom1.jsp?rugId=<%=rugId%>'" />
+                                            <a href="<%=rs.getString("RugImageDetailURL")%>" data-standard="<%=rs.getString("RugImageDetailURL")%>" >
+                                                <img src="<%=rs.getString("RugImageDetailURL")%>" alt=""/>
                                             </a>
                                         </li>
                                         <%}%>
                                         <li>
-                                        <center><a class="p-btn" onclick="window.location = 'rugZoom.jsp?rugId=<%=rugId%>'">Full View</a></center>
+                                        <center><a class="p-btn" onclick="window.location = 'test2.jsp?rugId=<%=rugId%>'">Full View</a></center>
                                         </li>
                                     </ul>
                                 </section>
@@ -191,7 +172,6 @@
                                         rs = st.executeQuery(sql);
                                         while (rs.next()) {
                                     %>
-
                                     <table>
                                         <tr><td>RUG NO</td><td>
                                                 <%if (rs.getString("RugportNo") == null) {
@@ -203,38 +183,37 @@
                                                 out.print("NA");
                                             } else {
                                                 out.print(rs.getString("UPPER(RugQuality)"));
-                                                    }%></td></tr>
+                                            }%></td></tr>
                                         <tr><td>DESIGN</td><td><%if (rs.getString("UPPER(RugDesign)") == null) {
                                                 out.print("NA");
                                             } else {
                                                 out.print(rs.getString("UPPER(RugDesign)"));
-                                                    }%></td></tr>
+                                            }%></td></tr>
                                         <tr><td>ORIGIN</td><td><%if (rs.getString("UPPER(RugOrigin)") == null) {
                                                 out.print("NA");
                                             } else {
                                                 out.print(rs.getString("UPPER(RugOrigin)"));
-                                                    }%></td></tr>
+                                            }%></td></tr>
                                         <tr><td>SIZE</td><td><%if (rs.getString("RugSize") == null) {
                                                 out.print("NA");
                                             } else {
-                                                        out.print(rs.getString("RugSize"));
-                                                    }%></td></tr>
+                                                out.print(rs.getString("RugSize"));
+                                            }%></td></tr>
                                         <tr><td>COLOR</td><td><%if (rs.getString("UPPER(RugColor)") == null) {
                                                 out.print("NA");
                                             } else {
                                                 out.print(rs.getString("UPPER(RugColor)"));
-                                                    }%></td></tr>
+                                            }%></td></tr>
                                         <tr><td>PILE</td><td><%if (rs.getString("UPPER(RugPile)") == null) {
                                                 out.print("NA");
                                             } else {
-                                                        out.print(rs.getString("UPPER(RugPile)"));
-                                                    }%></td></tr>
+                                                out.print(rs.getString("UPPER(RugPile)"));
+                                            }%></td></tr>
                                         <tr><td>FOUNDATION</td><td><%if (rs.getString("UPPER(RugFoundation)") == null) {
                                                 out.print("NA");
                                             } else {
                                                 out.print(rs.getString("UPPER(RugFoundation)"));
-                                                    }%></td></tr>
-
+                                            }%></td></tr>
                                     </table>
                                     <%}%>
                                     <ul class="product-share">
@@ -251,9 +230,6 @@
                         </div>
                         <div class="clearfix"> </div>
                     </div>
-                    <!--<div class="details-right">
-                            
-                    </div>-->
                     <div class="clearfix"> </div>
                 </div>
                 <!---//End-product-details--->
@@ -265,7 +241,6 @@
         <div class="footer">
             <div class="container">
                 <div class="footer-grids">
-
                     <div class="col-md-3 footer-grid">
                         <h3 align="center">Social Media</h3>
                         <div class="social-icons text-center">
@@ -290,7 +265,6 @@
                                 I purchased two rugs but will definitely be going back after viewing the competition.</p>
                             <a href="#">-Craig Janas<span><span></span></a>
                         </div>
-
                     </div>
                     <div class="col-md-3 footer-grid testmonial">
 
@@ -304,7 +278,6 @@
                              <p>In reprehenderit in voluptate velit esse cillum.</p>
                              <a href="#">John Smith,<span>Occupation</span></a>
                          </div>-->
-
                     </div>
                     <div class="col-md-3 footer-grid about-grid">
                         <h3 align="center">Quick Links</h3>
@@ -331,13 +304,10 @@
         </div>
         <!-- footer -->
         <!-- container -->
-
         <form action="rugZoom1.jsp?rugId=<%=rugId%>" method="post">
             <input type="text" value="<%=rugId%>" name="rugId" hidden>
             <input type="submit" value="Submit">
-
         </form>
-
         <%   con.close();
             } catch (Exception e) {
                 e.printStackTrace();

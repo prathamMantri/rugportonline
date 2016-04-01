@@ -136,16 +136,12 @@ td {
 	box-shadow: 0 0 5em rgba(0, 0, 0, .1);
 }
 
-.container1 section + section {
-	margin-top: 3em;
-	border-top: 1px solid #ccc;
-	padding-top: 1em;
-}
 
 
 
 .thumbnails {
 	overflow: hidden;
+        position: absolute
 	margin: 1em 0;
         width:500px;
 	padding: 1px;
@@ -156,6 +152,7 @@ td {
 	display: inline-block;
 	width: 140px;
 	margin: 0 5px;
+        
 }
 
 .thumbnails img {

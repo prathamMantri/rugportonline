@@ -46,7 +46,7 @@
             this.hide();
         else {
             var n = -1 * l, o = -1 * m;
-            this.$zoom.css({top: n, left: o}), this.opts.onMove.call(this, n, o)
+            this.$zoom.css({top: n, left: o}), this.opts.onMove.call(this, n)
         }
     }, b.prototype.hide = function () {
         this.isOpen && (this.$flyout.detach(), this.isOpen = !1, this.opts.onHide.call(this))
